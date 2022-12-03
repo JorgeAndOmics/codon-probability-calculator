@@ -9,10 +9,10 @@ target_select = [
     'Yeast Mitochondrial', #3
     'Mold Mitochondrial', 'Protozoan Mitochondrial', 'Coelenterate Mitochondrial', 'Mycoplasma', 'Spiroplasma', #4 Same Codon Tables
     'Invertebrate Mitochondrial', #5
-    'Ciliate Nuclear; Dasycladacean Nuclear; Hexamita Nuclear', #6
-    'Echinoderm Mitochondrial; Flatworm Mitochondrial', #7
+    'Ciliate Nuclear', 'Dasycladacean Nuclear', 'Hexamita Nuclear', #6 Same Codon Tables
+    'Echinoderm Mitochondrial', 'Flatworm Mitochondrial', #7 Same Codon Tables
     'Euplotid Nuclear', #8
-    'Bacterial, Archaeal and Plant Plastid', #9
+    'Bacterial', 'Archaeal', 'Plant Plastid', #9 Same Codon Tables
     'Alternative Yeast Nuclear', #10
     'Ascidian Mitochondrial', #11
     'Alternative Flatworm Mitochondrial', #12
@@ -22,7 +22,7 @@ target_select = [
     'Scenedesmus obliquus Mitochondrial', #16
     'Thraustochytrium Mitochondrial', #17
     'Pterobranchia Mitochondrial', #18
-    'Candidate Division SR1 and Gracilibacteria', #19
+    'Candidate Division SR1', 'Gracilibacteria', #19 Same Codon Tables
     'Pachysolen tannophilus Nuclear', #20
     'Karyorelict Nuclear', #21
     'Condylostoma Nuclear', #22
@@ -74,7 +74,7 @@ def print_normal_dict():
 
 extended_instance = Extended_IUPAC_Dictionary()
 def print_extended_dict():
-    print(f'EXTENDED AMINOACID PROBABILITIES FOR {target_select[selection].upper()}')
+    print(f'EXTENDED AMINOOACID PROBABILITIES FOR {target_select[selection].upper()}')
     print('========================================================')
     return extended_instance.probabilities()
 
