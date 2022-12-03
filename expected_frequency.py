@@ -31,8 +31,8 @@ target_select = [
     'Blastocrithidia Nuclear', #25
     'Balanophoraceae Plastid', #26
     'Cephalodiscidae Mitochondrial' #27
-
                ]
+
 def user_input_selection():
     print('Select Table Number:')
     for index, content in enumerate(target_select):
