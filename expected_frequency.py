@@ -37,13 +37,29 @@ def user_input_selection():
     print('Select Table Number:')
     for index, content in enumerate(target_select):
         print(f'[{index}] {content}')
-
 user_input_selection()
-selection = int(input('Table Number:'))
+
+def user_selection(s=input(('Table Number:'))):
+    try:
+        s = int(s)
+        if s <= len(target_select):
+            return s
+        else:
+            print('Wrong Number. Try Again:')
+            return user_selection(s=input(('Table Number:')))
+    except ValueError:
+        print('Wrong Input. Try Again')
+        return user_selection(s=input(('Table Number:')))
+selection = user_selection()
+
 
 class Protein_Dictionary:
     def __init__(self):
-        None
+        self._codon_dict = CodonTable.unambiguous_dna_by_name[target_select[selection]].forward_table
+        self._amino_string = list(self._codon_dict.values())
+
+    def __str__(self):
+        return f'Codon Table'
 
     def probabilities(self):
         for i in self._amino_letters:
@@ -51,19 +67,13 @@ class Protein_Dictionary:
             amino_prob = int(amino_count) / 64
             print(f'{i}({self._amino_words[i]}) probability is {round(amino_prob, 4)} ({amino_count}/64)')
 
-
 class Normal_IUPAC_Dictionary(Protein_Dictionary):
     _amino_letters = IUPACData.protein_letters
     _amino_words = IUPACData.protein_letters_1to3
-    _codon_dict = CodonTable.unambiguous_dna_by_name[target_select[selection]].forward_table
-    _amino_string = list(_codon_dict.values())
 
 class Extended_IUPAC_Dictionary(Protein_Dictionary):
     _amino_letters = IUPACData.extended_protein_letters
     _amino_words = IUPACData.protein_letters_1to3_extended
-    _codon_dict = Normal_IUPAC_Dictionary._codon_dict
-    _amino_string = list(_codon_dict.values())
-
 
 
 normal_instance = Normal_IUPAC_Dictionary()
@@ -77,6 +87,7 @@ def print_extended_dict():
     print(f'EXTENDED AMINOOACID PROBABILITIES FOR {target_select[selection].upper()}')
     print('========================================================')
     return extended_instance.probabilities()
+
 
 print_normal_dict()
 print('')
