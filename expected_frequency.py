@@ -74,7 +74,7 @@ def print_normal_dict():
 
 extended_instance = Extended_IUPAC_Dictionary()
 def print_extended_dict():
-    print(f'EXTENDED AMINOOACID PROBABILITIES FOR {target_select[selection].upper()}')
+    print(f'EXTENDED AMINOACID PROBABILITIES FOR {target_select[selection].upper()}')
     print('========================================================')
     return extended_instance.probabilities()
 
